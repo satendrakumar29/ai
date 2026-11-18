@@ -1,0 +1,63 @@
+Aapke screenshot ke hisaab se, assets folder ke andar jo sub-folders hain, unme exactly kya rakhna hai, main detail me bata raha hu. Yeh structure React Native (Expo) ke best practices ke hisaab se hai:
+
+📁 1. assets/fonts/ (Fonts ke liye)
+
+Agar aap app me koi custom font use karna chahte hain (jaise ChatGPT ya DeepSeek jaisa premium look dene ke liye), toh uski .ttf ya .otf files yahan rakhenge.
+
+· Kya rakhein: Inter-Regular.ttf, Inter-Bold.ttf, Poppins-Regular.ttf etc.
+· (Agar aap default system font use kar rahe hain, toh yeh folder khali reh sakta hai).
+
+📁 2. assets/icons/ (Chote icons aur Logos ke liye)
+
+Yahan woh icons aayenge jo @expo/vector-icons (Ionicons, Feather) me nahi milte, ya jinki aapko custom image chahiye.
+
+· Kya rakhein:
+  · google-logo.png (Login screen ke "Continue with Google" white button ke liye).
+  · ai-assist-logo.png (Aapka futuristic AI logo jo Image 1 me tha).
+  · Koi custom attachment icon agar aap default + ya Camera icon nahi use karna chahte.
+
+📁 3. assets/images/ (Badi images aur Screens ke liye)
+
+Yahan app ki main graphics aayengi.
+
+· Kya rakhein:
+  · default-avatar.png (Sidebar me user profile ke liye agar Google se photo na mile).
+  · empty-chat-bg.png (Agar aap chat screen ke empty state me koi background texture ya image chahte hain).
+  · splash-image.png (App open hote waqt ka bada logo).
+  · onboarding-1.png, onboarding-2.png (Agar aap future me onboarding screens add karte hain).
+
+📁 4. assets/lottie/ (Animations ke liye)
+
+Lottie JSON files high-quality animations ke liye use hoti hain.
+
+· Kya rakhein:
+  · voice-wave.json (Jab user mic par bol raha ho, toh text bar me jo flow line/waveform aani chahiye, uski Lottie file).
+  · loading-dots.json (Jab AI apna response generate kar raha ho, toh typing indicator).
+  · success-check.json (Jab subscription successful ho jaye).
+
+---
+
+⚠️ Important Note (App Icon & Splash Screen):
+
+Expo me App ka main Icon aur Splash screen generally assets folder ke root me rakhe jaate hain (kisi sub-folder me nahi), taaki app.json easily unhe read kar sake.
+Aapko assets/ ke andar direct (sub-folder ke bahar) ye files rakhni chahiye:
+
+· icon.png (1024x1024 - Play Store App Icon)
+· splash.png (App khulte waqt ki screen)
+· adaptive-icon.png (Android ke liye foreground icon)
+
+💡 Code me inko kaise use karenge? (Example)
+
+Agar aap google-logo.png ko Login screen me use karna chahte hain, toh code kuch aisa hoga:
+
+```tsx
+import { Image } from 'react-native';
+
+<Image 
+  source={require('../../assets/icons/google-logo.png')} 
+  style={{ width: 24, height: 24 }} 
+/>
+```
+
+Ab aapke paas Frontend ka poora code aur Assets ka structure ready hai. 
+Kya main ab Backend (Render/Node.js) ka code likhna shuru karu jisse aapki app actually OpenRouter se connect ho sake?

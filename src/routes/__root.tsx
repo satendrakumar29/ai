@@ -1,0 +1,48 @@
+import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { AuthProvider } from "@/lib/auth/provider";
+import { APP_NAME } from "@/lib/brand";
+import { HeadContent, Outlet, Scripts, createRootRoute } from "@tanstack/react-router";
+import appCss from "../styles.css?url";
+
+const themeBoot = `(function(){try{var raw=localStorage.getItem("vela-desk");if(!raw)return;var s=JSON.parse(raw).state.settings;if(s.backgroundId)document.documentElement.dataset.bg=s.backgroundId;if(s.fontScale)document.documentElement.dataset.scale=s.fontScale;}catch(e){}})();`;
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { title: APP_NAME },
+      { name: "description", content: "Vela is a multi-model chat desk powered by OpenRouter." },
+      { name: "theme-color", content: "#0c0e10" },
+      { name: "apple-mobile-web-app-title", content: APP_NAME },
+      { name: "mobile-web-app-capable", content: "yes" },
+    ],
+    links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap",
+      },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "stylesheet", href: appCss },
+      { rel: "manifest", href: "/__grok/manifest.webmanifest" },
+      { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
+    ],
+  }),
+  component: () => (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <HeadContent />
+      </head>
+      <body className="min-h-dvh bg-bg font-sans text-fg antialiased">
+        <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
+        <PreviewHostBridge />
+        <AuthProvider>
+          <Outlet />
+        </AuthProvider>
+        <Scripts />
+      </body>
+    </html>
+  ),
+});

@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+:root {
+  --vela-bg: #0c0e10;
+  --vela-elevated: #171a1d;
+  --vela-subtle: #22262b;
+  --vela-fg: #f4f5f6;
+  --vela-muted: #a3aab2;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+  --vela-danger: #d4535c;
+  --vela-faint: color-mix(in oklab, var(--vela-fg) 42%, transparent);
+  --vela-line: color-mix(in oklab, var(--vela-fg) 12%, transparent);
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--vela-bg);
+  --color-elevated: var(--vela-elevated);
+  --color-subtle: var(--vela-subtle);
+  --color-fg: var(--vela-fg);
+  --color-muted: var(--vela-muted);
+  --color-faint: var(--vela-faint);
+  --color-accent: var(--vela-accent);
+  --color-accent-fg: var(--vela-accent-fg);
+  --color-danger: var(--vela-danger);
+  --color-line: var(--vela-line);
+  --font-sans: Outfit, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+html[data-bg="graphite"] {
+  --vela-bg: #141618;
+  --vela-elevated: #1e2124;
+  --vela-subtle: #2a2e32;
+  --vela-fg: #f3f4f5;
+  --vela-muted: #a1a8ae;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="carbon"] {
+  --vela-bg: #101010;
+  --vela-elevated: #1c1c1c;
+  --vela-subtle: #282828;
+  --vela-fg: #f5f5f5;
+  --vela-muted: #a6a6a6;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="midnight"] {
+  --vela-bg: #0d1218;
+  --vela-elevated: #161c26;
+  --vela-subtle: #222a36;
+  --vela-fg: #eef2f6;
+  --vela-muted: #96a3b4;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="harbor"] {
+  --vela-bg: #0c1416;
+  --vela-elevated: #152022;
+  --vela-subtle: #203033;
+  --vela-fg: #eef6f6;
+  --vela-muted: #93aaa8;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="pine"] {
+  --vela-bg: #0e1410;
+  --vela-elevated: #172018;
+  --vela-subtle: #223026;
+  --vela-fg: #f0f5f1;
+  --vela-muted: #96a89a;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="cocoa"] {
+  --vela-bg: #14110e;
+  --vela-elevated: #211c18;
+  --vela-subtle: #2e2822;
+  --vela-fg: #f6f1ea;
+  --vela-muted: #b3a79c;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="dusk"] {
+  --vela-bg: #10131a;
+  --vela-elevated: #1a1e28;
+  --vela-subtle: #262b38;
+  --vela-fg: #eef0f6;
+  --vela-muted: #9aa3b5;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="slate"] {
+  --vela-bg: #1c2128;
+  --vela-elevated: #262c34;
+  --vela-subtle: #323944;
+  --vela-fg: #f4f6f8;
+  --vela-muted: #aeb6bf;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="wine"] {
+  --vela-bg: #160f12;
+  --vela-elevated: #24181c;
+  --vela-subtle: #322228;
+  --vela-fg: #f8f1f3;
+  --vela-muted: #c0a8ae;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="ocean"] {
+  --vela-bg: #0b1520;
+  --vela-elevated: #122033;
+  --vela-subtle: #1b2d44;
+  --vela-fg: #eef4fb;
+  --vela-muted: #9eb0c6;
+  --vela-accent: #3dbeab;
+  --vela-accent-fg: #062824;
+}
+html[data-bg="paper"] {
+  --vela-bg: #f4f1eb;
+  --vela-elevated: #fffcf7;
+  --vela-subtle: #e7e0d4;
+  --vela-fg: #1c1915;
+  --vela-muted: #5e584f;
+  --vela-accent: #0f766e;
+  --vela-accent-fg: #f3fffc;
+  color-scheme: light;
+}
+html[data-bg="fog"] {
+  --vela-bg: #e7edf1;
+  --vela-elevated: #f7f9fb;
+  --vela-subtle: #d5dee5;
+  --vela-fg: #161a1e;
+  --vela-muted: #53606a;
+  --vela-accent: #0f766e;
+  --vela-accent-fg: #f3fffc;
+  color-scheme: light;
+}
+html[data-bg="sand"] {
+  --vela-bg: #f3ecdf;
+  --vela-elevated: #fbf7f0;
+  --vela-subtle: #e4d8c6;
+  --vela-fg: #231e18;
+  --vela-muted: #6e655b;
+  --vela-accent: #0f766e;
+  --vela-accent-fg: #f3fffc;
+  color-scheme: light;
+}
+html[data-bg="snow"] {
+  --vela-bg: #f6f6f5;
+  --vela-elevated: #ffffff;
+  --vela-subtle: #e6e6e4;
+  --vela-fg: #171717;
+  --vela-muted: #5c5c5c;
+  --vela-accent: #0f766e;
+  --vela-accent-fg: #f3fffc;
+  color-scheme: light;
+}
+
+html[data-scale="sm"] { font-size: 16px; }
+html[data-scale="md"] { font-size: 17px; }
+html[data-scale="lg"] { font-size: 19px; }
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+  html, body {
+    background: var(--vela-bg);
+    color: var(--vela-fg);
+  }
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: Outfit, system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--vela-accent) 35%, transparent);
+  }
+  button, input, textarea { font: inherit; color: inherit; }
+}
+
+.pt-safe { padding-top: max(1.25rem, env(safe-area-inset-top)); }
+.pb-safe { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+.scrim { background: rgb(0 0 0 / 0.55); }
+.scroll-thin { scrollbar-width: thin; scrollbar-color: var(--vela-line) transparent; }
+
+.vela-glow {
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--vela-accent) 16%, transparent), transparent);
+}
+
+.slide-x { transition: transform var(--motion-fast) var(--ease-smooth-out); }
+.knob { transition: transform var(--motion-quick) var(--ease-smooth-out); }
+
+.sheet-in {
+  animation: sheet-in var(--motion-fast) var(--ease-smooth-out);
+}
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.menu-in {
+  transform-origin: bottom left;
+  animation: menu-in var(--motion-fast) var(--ease-smooth-out);
+}
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--vela-muted);
+  animation: vela-pulse 1s ease-in-out infinite;
+}
+.pulse-dot:nth-child(2) { animation-delay: 0.15s; }
+.pulse-dot:nth-child(3) { animation-delay: 0.3s; }
+@keyframes vela-pulse {
+  0%, 80%, 100% { opacity: 0.25; }
+  40% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-x, .knob { transition: none; }
+  .sheet-in, .menu-in, .pulse-dot { animation: none; }
+}
