@@ -152,8 +152,8 @@ export default defineConfig(({ command, isPreview }) => ({
     strictPort: true,
   },
   preview: {
-    host: "127.0.0.1",
-    port: 8081,
+    host: "0.0.0.0", // ✅ Render के लिए इसे 0.0.0.0 होना ज़रूरी है
+    port: 8080,      // ✅ पोर्ट 8080 कर दिया है ताकि Render इसे पहचान सके
     strictPort: true,
   },
   resolve: { tsconfigPaths: true },
@@ -170,7 +170,7 @@ export default defineConfig(({ command, isPreview }) => ({
     ...(command === "build" || isPreview
       ? [
           nitro({
-            preset: "vercel",
+            preset: "node-server", // ✅ Vercel की जगह Node-server
             // Auto-registers server/middleware/* (the PWA install page +
             // manifest + head-tag middleware). Nitro v3 defaults serverDir to
             // false, so removing this silently unwires /?install=1 on deploys.
